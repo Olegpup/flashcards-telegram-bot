@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-from loader import CONNECT_STR_MONGO
+from data.config import CONNECT_STR_MONGO
 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(CONNECT_STR_MONGO)
