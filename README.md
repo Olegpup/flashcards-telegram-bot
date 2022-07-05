@@ -1,6 +1,7 @@
 # flashcards-telegram-bot
 
 ### MongoDB Document Sample
+Account
 ```
 {
   "userId": 1,
@@ -9,6 +10,7 @@
       {
         "deckName": "Body Parts",
         "lastUsed": "dd/mm/yyyy hh:ss:ms",
+        "favorite": true,
         "cards": [
           {
             "fileId": 11,
@@ -20,5 +22,11 @@
     ]
   }
 }
+```
 
+Notification
+```
+{
+  "userId": 1
+}
 ```
