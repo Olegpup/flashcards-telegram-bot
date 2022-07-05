@@ -5,11 +5,12 @@ Account
 ```
 {
   "userId": 1,
+  "reminder": true,
   "categories": {
     "English": [
       {
         "deckName": "Body Parts",
-        "lastUsed": "dd/mm/yyyy hh:ss:ms",
+        "lastUsed": 1657033667,
         "favorite": true,
         "cards": [
           {
@@ -21,12 +22,5 @@ Account
       }
     ]
   }
-}
-```
-
-Notification
-```
-{
-  "userId": 1
 }
 ```
