@@ -3,11 +3,9 @@ from loader import CONNECT_STR_MONGO
 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(CONNECT_STR_MONGO)
-db = client["Munchkin"]
+db = client["memo-flashcards"]
 
-C_PLAYERS = db["Players"]
-C_GAMES = db["Games"]
-
+CARDS = db["Cards"]
 
 async def insert_document(collection, data: dict, multiple=False) -> None or int:
     if multiple:
