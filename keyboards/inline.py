@@ -1,8 +1,11 @@
 from aiogram.types import KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
 
-def kb_main_menu():
-    btn_view_categories = InlineKeyboardButton(text="Categories", callback_data="view_categories")
-    btn_view_settings = InlineKeyboardButton(text="Settings", callback_data="view_settings")
+common_buttons = []
 
-    return InlineKeyboardMarkup(resize_keyboard=True).add(btn_view_categories, btn_view_settings)
+def kb_main_menu():
+    return InlineKeyboardMarkup(resize_keyboard=True).add(*[
+        InlineKeyboardButton(text="Categories", callback_data="view_categories"),
+        InlineKeyboardButton(text="Settings", callback_data="view_settings"),
+        *common_buttons
+    ])
