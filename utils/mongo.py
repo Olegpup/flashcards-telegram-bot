@@ -4,36 +4,31 @@ from data.config import CONNECT_STR_MONGO
 
 client = motor.motor_asyncio.AsyncIOMotorClient(CONNECT_STR_MONGO)
 db = client["memo-flashcards"]
+ACCOUNTS = db["Accounts"] 
 
-CARDS = db["Cards"]
+async def insert_many(collection, data: list) -> int:
+    await collection.insert_many(data)
 
-async def insert_document(collection, data: dict, multiple=False) -> None or int:
-    if multiple:
-        await collection.insert_many(data)
-    else:
-        await collection.insert_one(data)
+async def insert_one(collection, data: dict) -> int:
+    await collection.insert_one(data)
 
+async def find_one(collection, elements: dict) -> dict or None:
+    return await collection.find_one(elements)
 
-async def find_document(collection, elements: dict, multiple=False) -> list or dict:
-    if multiple:
-        answer = []
-        async for document in collection.find(elements):
-            answer.append(document)
-        return answer
-    else:
-        return await collection.find_one(elements)
+async def find_many(collection, elements: dict) -> list:
+    answer = []
+    async for document in collection.find(elements):
+        answer.append(document)
+    return answer
 
-
-async def get_all_documents(collection) -> list:
+async def get_all(collection) -> list:
     answer = list()
     async for doc in collection.find():
         answer.append(doc)
     return answer
 
-
-async def delete_document(collection, id_) -> None:
+async def delete(collection, id_) -> None:
     await collection.delete_one({"_id": id_})
 
-
-async def update_document(collection, id_, doc: dict) -> None:
+async def update(collection, id_, doc: dict) -> None:
     await collection.update_one({"_id": id_}, {'$set': doc})
