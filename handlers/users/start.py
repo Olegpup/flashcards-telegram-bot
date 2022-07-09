@@ -4,7 +4,6 @@ from aiogram.dispatcher import FSMContext
 from keyboards.inline import *
 from loader import dp
 from consts.c_handlers import *
-import pprint
 
 
 class SettingsMenu(StatesGroup):
@@ -36,8 +35,6 @@ async def view_categories(callback: types.CallbackQuery):
 
 @dp.callback_query_handler(text="back", state="*")
 async def back(callback: types.CallbackQuery, state: FSMContext):
-    pprint.pprint(dict(callback))
-
     current_state = await state.get_state()  # If state is not declared will be None
     class_name, state_name = current_state.split(":")
     fsm = globals()[class_name]
