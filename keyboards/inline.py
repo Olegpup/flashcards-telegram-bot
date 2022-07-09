@@ -1,4 +1,4 @@
-from aiogram.types import KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from consts.c_kb import *
 
 
