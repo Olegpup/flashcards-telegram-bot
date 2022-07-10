@@ -15,4 +15,3 @@ async def start_bot(message: types.Message):
 async def view_categories(callback: types.CallbackQuery):
     await CategoriesMenu.categories.set()
     await callback.message.edit_text(CATEGORIES_MESSAGE, reply_markup=await kb_categories_menu(callback.from_user.id))
-
