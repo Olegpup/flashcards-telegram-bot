@@ -1,1 +1,1 @@
-__all__ = ["main_menu", "categories"]
+__all__ = ["main_menu", "categories", "decks"]

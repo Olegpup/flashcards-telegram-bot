@@ -5,7 +5,7 @@ from loader import dp
 from aiogram import types
 
 
-@dp.message_handler(commands=["start"])
+@dp.message_handler(commands=["start"], state="*")
 async def start_bot(message: types.Message):
     await message.answer(WELCOME_MESSAGE, reply_markup=kb_main_menu())
 

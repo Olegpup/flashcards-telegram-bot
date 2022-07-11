@@ -32,9 +32,22 @@ async def kb_decks_menu(user_id: int, category):
     kb = InlineKeyboardMarkup(row_width=3)
     b_list = []
     for deck in decks:
-        b_list.append(InlineKeyboardButton(text=deck["deckName"], callback_data=f"view_deck:{category}-{deck['deckName']}"))
+        b_list.append(InlineKeyboardButton(text=deck["deckName"], callback_data=f"view_deck:{category}:{deck['deckName']}"))
     kb.add(*b_list)
-    kb.row(InlineKeyboardButton(text=ADD_DECK, callback_data="add_category"))
+    kb.row(InlineKeyboardButton(text=ADD_DECK, callback_data="add_deck"))
+    kb.row(InlineKeyboardButton(text=BACK, callback_data="back"))
+
+    return kb
+
+
+async def kb_cards_menu(user_id: int, category, deck):
+    cards, = list(filter(lambda deckName: deckName == deck, (await find_one(ACCOUNTS, {"userId": user_id}))["categories"][category]))
+    kb = InlineKeyboardMarkup(row_width=3)
+    b_list = []
+    for card in cards:
+        b_list.append(InlineKeyboardButton(text=card["frontSide"], callback_data=f"view_card:{category}:{deck['deckName']}:{card['frontSide']}"))
+    kb.add(*b_list)
+    kb.row(InlineKeyboardButton(text=ADD_CARD, callback_data="add_card"))
     kb.row(InlineKeyboardButton(text=BACK, callback_data="back"))
 
     return kb
