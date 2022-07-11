@@ -1,16 +1,16 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from consts.c_kb import *
 from utils.mongo import *
+from .utils import back_button
 
 
-common_buttons = []
+# TODO ADD HERE BACK CALLBACK DATA
 
 
 def kb_main_menu():
     return InlineKeyboardMarkup(resize_keyboard=True).add(*[
         InlineKeyboardButton(text=CATEGORIES, callback_data="view_categories"),
-        InlineKeyboardButton(text=SETTINGS, callback_data="view_settings"),
-        *common_buttons
+        InlineKeyboardButton(text=SETTINGS, callback_data="view_settings")
     ])
 
 
@@ -22,7 +22,7 @@ async def kb_categories_menu(user_id: int):
         b_list.append(InlineKeyboardButton(text=category, callback_data=f"view_category:{category}"))
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_CATEGORY, callback_data="add_category"))
-    kb.row(InlineKeyboardButton(text=BACK, callback_data="back"))
+    kb.row(back_button())
 
     return kb
 
@@ -35,7 +35,7 @@ async def kb_decks_menu(user_id: int, category):
         b_list.append(InlineKeyboardButton(text=deck["deckName"], callback_data=f"view_deck:{category}:{deck['deckName']}"))
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_DECK, callback_data="add_deck"))
-    kb.row(InlineKeyboardButton(text=BACK, callback_data="back"))
+    kb.row(back_button(category))
 
     return kb
 
@@ -49,6 +49,6 @@ async def kb_cards_menu(user_id: int, category, deck):
         b_list.append(InlineKeyboardButton(text=card["frontSide"], callback_data=f"view_card:{category}:{deck}:{card['frontSide']}"))
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_CARD, callback_data="add_card"))
-    kb.row(InlineKeyboardButton(text=BACK, callback_data="back"))
+    kb.row(back_button(category, deck))
 
     return kb

@@ -1,6 +1,6 @@
 from keyboards.inline import *
 from consts.c_handlers import *
-from .common import *
+from .fsm import CategoriesMenu
 from loader import dp
 from aiogram import types
 
