@@ -8,7 +8,6 @@ from loader import dp
 @dp.callback_query_handler(lambda callback: callback.data.startswith("view_deck"),
                            state=CategoriesMenu.decks)
 async def view_cards(callback: types.CallbackQuery):
-    print(123)
     await CategoriesMenu.cards.set()
     await callback.message.edit_text(CATEGORIES_MESSAGE,
                                      reply_markup=await kb_cards_menu(

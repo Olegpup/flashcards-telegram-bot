@@ -11,7 +11,7 @@ async def start_bot(message: types.Message):
 
 
 @dp.callback_query_handler(text="view_categories")
-@dp.callback_query_handler(state=CategoriesMenu.decks)
+@dp.callback_query_handler(text="view_categories", state=CategoriesMenu.categories)
 async def view_categories(callback: types.CallbackQuery):
     await CategoriesMenu.categories.set()
     await callback.message.edit_text(CATEGORIES_MESSAGE, reply_markup=await kb_categories_menu(callback.from_user.id))
