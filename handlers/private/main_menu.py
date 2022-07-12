@@ -1,4 +1,4 @@
-from keyboards.inline import *
+from keyboards.user import *
 from consts.c_handlers import *
 from .fsm import CategoriesMenu
 from loader import dp
