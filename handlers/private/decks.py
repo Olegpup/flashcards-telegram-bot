@@ -11,7 +11,6 @@ async def view_cards(callback: types.CallbackQuery):
     await CategoriesMenu.cards.set()
     await callback.message.edit_text(CATEGORIES_MESSAGE,
                                      reply_markup=await kb_cards_menu(
-                                        user_id=callback.from_user.id,
-                                        category=callback.data.split(":")[1],
-                                        deck=callback.data.split(":")[2]))
-
+                                         user_id=callback.from_user.id,
+                                         category=callback.data.split(":")[1],
+                                         deck=callback.data.split(":")[2]))

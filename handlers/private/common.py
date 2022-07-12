@@ -1,5 +1,5 @@
 # Do not remove
-from .fsm import * 
+from .fsm import *
 from .categories import *
 from .decks import *
 from .main_menu import *

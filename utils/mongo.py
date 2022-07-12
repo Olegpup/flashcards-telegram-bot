@@ -1,7 +1,6 @@
 import motor.motor_asyncio
 from config import CONNECT_STR_MONGO
 
-
 client = motor.motor_asyncio.AsyncIOMotorClient(CONNECT_STR_MONGO)
 db = client["memo-flashcards"]
 ACCOUNTS = db["Account"]

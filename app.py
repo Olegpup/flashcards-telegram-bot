@@ -3,7 +3,6 @@ from loader import dp
 from handlers import *
 from logging import basicConfig, INFO
 
-
 basicConfig(level=INFO)
 
 if __name__ == '__main__':
