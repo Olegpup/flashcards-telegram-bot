@@ -7,7 +7,7 @@ from loader import dp
 
 @dp.callback_query_handler(lambda callback: callback.data.startswith("view_deck"),
                            state=CategoriesMenu.decks)
-async def view_deck_menu(callback: types.CallbackQuery):
+async def view_deck(callback: types.CallbackQuery):
     await CategoriesMenu.deck.set()
     message_text = f"{DECK_MENU_MESSAGE} \"{callback.data.split(':')[2]}\":"
     await callback.message.edit_text(message_text,

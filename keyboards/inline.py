@@ -4,9 +4,6 @@ from utils.mongo import *
 from .utils import back_button
 
 
-# TODO ADD HERE BACK CALLBACK DATA
-
-
 def kb_main_menu():
     kb = InlineKeyboardMarkup(resize_keyboard=True)
     kb.row(InlineKeyboardButton(text=CATEGORIES, callback_data="view_categories"))
@@ -38,7 +35,7 @@ async def kb_decks_menu(user_id: int, category):
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_DECK, callback_data="add_deck"))
     kb.row(InlineKeyboardButton(text=CATEGORY_SETTINGS, callback_data=f"view_category_settings:{category}"))
-    kb.row(back_button(category))
+    kb.row(back_button())
 
     return kb
 

@@ -1,5 +1,3 @@
-from emoji import emojize
-
 CATEGORIES = "Categories"
 SETTINGS = "Settings"
 
