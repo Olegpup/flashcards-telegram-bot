@@ -8,10 +8,11 @@ from .utils import back_button
 
 
 def kb_main_menu():
-    return InlineKeyboardMarkup(resize_keyboard=True).add(*[
-        InlineKeyboardButton(text=CATEGORIES, callback_data="view_categories"),
-        InlineKeyboardButton(text=SETTINGS, callback_data="view_settings")
-    ])
+    kb = InlineKeyboardMarkup(resize_keyboard=True)
+    kb.row(InlineKeyboardButton(text=CATEGORIES, callback_data="view_categories"))
+    kb.row(InlineKeyboardButton(text=SETTINGS, callback_data="view_settings"))
+
+    return kb
 
 
 async def kb_categories_menu(user_id: int):
