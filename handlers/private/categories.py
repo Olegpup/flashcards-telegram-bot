@@ -9,7 +9,8 @@ from loader import dp
                            state=CategoriesMenu.categories)
 async def view_decks(callback: types.CallbackQuery):
     await CategoriesMenu.decks.set()
-    await callback.message.edit_text(CATEGORIES_MESSAGE,
+    message_text = f"{DECKS_MESSAGE} \"{callback.data.split(':')[1]}\":"
+    await callback.message.edit_text(message_text,
                                      reply_markup=await kb_decks_menu(
                                          user_id=callback.from_user.id,
                                          category=callback.data.split(":")[1]))

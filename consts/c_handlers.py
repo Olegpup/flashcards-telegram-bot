@@ -1,2 +1,5 @@
 WELCOME_MESSAGE = "Main menu:"
-CATEGORIES_MESSAGE = "Categories:"
+CATEGORIES_MESSAGE = "Choose a category:"
+DECKS_MESSAGE = "Category"
+DECK_MENU_MESSAGE = "Deck"
+CARDS_MESSAGE = "Cards from deck"

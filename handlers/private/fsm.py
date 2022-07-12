@@ -8,4 +8,5 @@ class SettingsMenu(StatesGroup):
 class CategoriesMenu(StatesGroup):
     categories = State()
     decks = State()
+    deck = State()
     cards = State()

@@ -36,6 +36,17 @@ async def kb_decks_menu(user_id: int, category):
             InlineKeyboardButton(text=deck["deckName"], callback_data=f"view_deck:{category}:{deck['deckName']}"))
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_DECK, callback_data="add_deck"))
+    kb.row(InlineKeyboardButton(text=CATEGORY_SETTINGS, callback_data=f"view_category_settings:{category}"))
+    kb.row(back_button(category))
+
+    return kb
+
+
+async def kb_deck_menu(category: str, deck: str):
+    kb = InlineKeyboardMarkup(row_width=3)
+    kb.row(InlineKeyboardButton(text=VIEW_CARDS_LIST, callback_data=f"view_cards_list:{category}:{deck}"))
+    kb.row(InlineKeyboardButton(text=START_DECK_VIEWING, callback_data=f"start_deck_viewing:{category}:{deck}"))
+    kb.row(InlineKeyboardButton(text=DECK_SETTINGS, callback_data=f"view_deck_settings:{category}:{deck}"))
     kb.row(back_button(category))
 
     return kb
