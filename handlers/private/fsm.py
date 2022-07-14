@@ -10,3 +10,4 @@ class CategoriesMenu(StatesGroup):
     decks = State()
     deck = State()
     cards = State()
+    card = State()

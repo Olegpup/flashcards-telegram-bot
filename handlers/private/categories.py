@@ -14,3 +14,4 @@ async def view_decks(callback: types.CallbackQuery):
                                      reply_markup=await kb_decks_menu(
                                          user_id=callback.from_user.id,
                                          category=callback.data.split(":")[1]))
+

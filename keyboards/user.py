@@ -25,7 +25,7 @@ async def kb_categories_menu(user_id: int):
     return kb
 
 
-async def kb_decks_menu(user_id: int, category):
+async def kb_decks_menu(user_id: int, category: str):
     decks = (await find_one(ACCOUNTS, {"userId": user_id}))["categories"][category]
     kb = InlineKeyboardMarkup(row_width=3)
     b_list = []
@@ -50,7 +50,7 @@ async def kb_deck_menu(category: str, deck: str):
     return kb
 
 
-async def kb_cards_menu(user_id: int, category, deck):
+async def kb_cards_menu(user_id: int, category: str, deck: str):
     cards, = list(filter(lambda cat: cat["deckName"] == deck,
                          (await find_one(ACCOUNTS, {"userId": user_id}))["categories"][category]))
     cards = cards["cards"]
@@ -61,6 +61,18 @@ async def kb_cards_menu(user_id: int, category, deck):
                                            callback_data=f"view_card:{category}:{deck}:{card['frontSide']}"))
     kb.add(*b_list)
     kb.row(InlineKeyboardButton(text=ADD_CARD, callback_data="add_card"))
+    kb.row(back_button(category, deck))
+
+    return kb
+
+
+async def kb_card_menu(user_id: int, category: str, deck: str):
+    cards, = list(filter(lambda cat: cat["deckName"] == deck,
+                         (await find_one(ACCOUNTS, {"userId": user_id}))["categories"][category]))
+    cards = cards["cards"]
+    kb = InlineKeyboardMarkup(row_width=3)
+    kb.row(InlineKeyboardButton(text=PREVIOUS_CARD, callback_data="next_card"),
+           InlineKeyboardButton(text=NEXT_CARD, callback_data="previous_card"))
     kb.row(back_button(category, deck))
 
     return kb

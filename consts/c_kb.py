@@ -13,5 +13,8 @@ VIEW_CARDS_LIST = "View list of cards"
 START_DECK_VIEWING = "Start this deck viewing"
 DECK_SETTINGS = "Deck settings"
 
+PREVIOUS_CARD = "<-"
+NEXT_CARD = "->"
+
 BACK = "Back"
 
