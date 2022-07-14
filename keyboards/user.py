@@ -25,6 +25,13 @@ async def kb_categories_menu(user_id: int):
     return kb
 
 
+async def kb_create_category():
+    kb = InlineKeyboardMarkup(row_width=3)
+    # kb.row(back_button())
+
+    return kb
+
+
 async def kb_decks_menu(user_id: int, category: str):
     decks = (await find_one(ACCOUNTS, {"userId": user_id}))["categories"][category]
     kb = InlineKeyboardMarkup(row_width=3)
