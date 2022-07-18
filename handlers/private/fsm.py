@@ -7,7 +7,7 @@ def _init_fsm_tree(name: str, states_tree_: dict) -> type:
 
     __states_tree_to_attributes(attributes, states_tree)
 
-    attributes.update({"states_tree", states_tree})
+    attributes.update({"states_tree": states_tree})
 
     return type(name, (StatesGroup, ), attributes)
 
