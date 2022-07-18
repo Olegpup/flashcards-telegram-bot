@@ -1,5 +1,6 @@
 CATEGORIES = "Categories"
 SETTINGS = "Settings"
+DISTRIBUTION = "Distribution"
 
 ADD_CATEGORY = "Add category"
 

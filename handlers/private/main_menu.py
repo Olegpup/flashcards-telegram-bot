@@ -3,11 +3,15 @@ from consts.c_handlers import *
 from .fsm import CategoriesMenu
 from loader import dp
 from aiogram import types
+from config import ADMINS
 
 
 @dp.message_handler(commands=["start"], state="*")
 async def start_bot(message: types.Message):
-    await message.answer(WELCOME_MESSAGE, reply_markup=kb_main_menu())
+    if message.from_user.id in ADMINS:
+        await message.answer(WELCOME_MESSAGE, reply_markup=kb_main_menu_admins())
+    else:
+        await message.answer(WELCOME_MESSAGE, reply_markup=kb_main_menu())
 
 
 @dp.callback_query_handler(text="view_categories")
