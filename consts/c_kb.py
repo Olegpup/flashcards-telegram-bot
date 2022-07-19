@@ -7,6 +7,7 @@ ADD_DECK = "Add deck"
 CATEGORY_SETTINGS = "Category settings"
 
 ADD_CARD = "Add card"
+RENAME_CATEGORY = "Rename category"
 DELETE_CATEGORY = "Delete category"
 
 VIEW_CARDS_LIST = "View list of cards"

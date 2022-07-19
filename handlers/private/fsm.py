@@ -11,7 +11,13 @@ class CategoriesMenu(StatesGroup):
     deck = State()
     cards = State()
     card = State()
+    category_settings = State()
 
 
 class AddCategory(StatesGroup):
     adding_category = State()
+
+
+class RenameCategory(StatesGroup):
+    renaming_category = State()
+

@@ -47,6 +47,22 @@ async def kb_decks_menu(user_id: int, category: str):
     return kb
 
 
+async def kb_category_settings(category: str):
+    kb = InlineKeyboardMarkup(row_width=3)
+    kb.row(InlineKeyboardButton(text=RENAME_CATEGORY, callback_data=f"rename_category:{category}"))
+    kb.row(InlineKeyboardButton(text=DELETE_CATEGORY, callback_data=f"delete_category:{category}"))
+    kb.row(back_button())
+
+    return kb
+
+
+async def kb_rename_category():
+    kb = InlineKeyboardMarkup(row_width=3)
+    # kb.row(back_button())
+
+    return kb
+
+
 async def kb_deck_menu(category: str, deck: str):
     kb = InlineKeyboardMarkup(row_width=3)
     kb.row(InlineKeyboardButton(text=VIEW_CARDS_LIST, callback_data=f"view_cards_list:{category}:{deck}"))
