@@ -34,6 +34,17 @@ def _connect_nodes(attributes: dict, level: dict, parent: FSMNode or None) -> FS
             return current_node
 
 
+def find_node(current_node: FSMNode, name: str) -> FSMNode or None:
+    if current_node.value == name:
+        return current_node
+
+    for node in current_node.nodes:
+        node = find_node(node, name)
+
+        if node:
+            return node
+
+
 CategoriesMenu = _init_fsm_tree(
     "CategoriesMenu",
     {
