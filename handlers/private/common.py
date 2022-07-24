@@ -30,4 +30,7 @@ async def back(callback: types.CallbackQuery, state: FSMContext):
         await state.finish()
 
     handler = globals()[f"view_{state_name}"]  # TODO Deal with case when None
+    
+    # TODO correct callback data for first back
+    # It has MESSAGE_handler, not callback
     await handler(callback)
