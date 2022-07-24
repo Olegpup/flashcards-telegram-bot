@@ -48,11 +48,15 @@ def find_node(current_node: FSMNode, name: str) -> FSMNode or None:
 CategoriesMenu = _init_fsm_tree(
     "CategoriesMenu",
     {
-        "root": {
-            "categories": {"a": {"b": {"c": {}}, "f": {}}},
-            "decks": {},
-            "deck": {},
-            "cards": {}
+        "categories": {
+            "decks": {
+                "deck": {
+                    "cards": {}
+                }
+            }
         }
     }
 )
+
+# TODO add function that will raise exception if with something wrong with fsm tree
+# will run before bot boot
