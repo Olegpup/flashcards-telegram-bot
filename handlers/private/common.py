@@ -13,22 +13,21 @@ from loader import dp
 
 @dp.callback_query_handler(lambda callback: callback.data.startswith("back"), state="*")
 async def back(callback: types.CallbackQuery, state: FSMContext):
-    # No need in callback.data.split
-
     current_state = await state.get_state()  # TODO If state is not declared will be None
     class_name, state_name = current_state.split(":")
-    fsm = globals()[class_name]
+    fsm_class = globals()[class_name]
+    
+    states_tree_root = getattr(fsm_class, "states_tree_root")
+    current_node = find_node(states_tree_root, state_name)
+    parent = current_node.parent
 
-    # Attributes starts from 1
-    if list(fsm.__dict__.keys()).index(state_name) == 1:
-        await callback.message.edit_text(WELCOME_MESSAGE, reply_markup=kb_main_menu())
+    if parent:
+        await getattr(fsm_class, parent.value).set()
 
-        await state.finish()
-    else:
-        await fsm.previous()
-
-        current_state = await state.get_state()
+        current_state = await state.get_state()  # TODO If state is not declared will be None
         _, state_name = current_state.split(":")
+    else:
+        await state.finish()
 
-        handler = globals()[f"view_{state_name}"]  # TODO Deal with case when None
-        await handler(callback)
+    handler = globals()[f"view_{state_name}"]  # TODO Deal with case when None
+    await handler(callback)
