@@ -16,7 +16,7 @@ def kb_main_menu_admin():
     kb = kb_main_menu()
 
     kb.add(*[
-        InlineKeyboardButton(text="view_distribution", callback_data="view_categories")
+        InlineKeyboardButton(text="view_distribution", callback_data="view_distribution")
     ])
 
     return kb
