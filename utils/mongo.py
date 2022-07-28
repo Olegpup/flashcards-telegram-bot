@@ -3,7 +3,9 @@ from config import CONNECT_STR_MONGO
 
 client = motor.motor_asyncio.AsyncIOMotorClient(CONNECT_STR_MONGO)
 db = client["memo-flashcards"]
+
 ACCOUNTS = db["Account"]
+DISTRIBUTIONS = db["Distribution"]
 
 
 async def insert_many(collection, data: list) -> int:

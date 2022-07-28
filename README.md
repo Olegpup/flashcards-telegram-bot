@@ -25,3 +25,14 @@ Account
   }
 }
 ```
+
+Distribution
+```
+{
+  "active": true,
+  "frequency": "hour / day / week / month",
+  "last_repeat": <timestamp>,
+  "first_repeat": <timestamp>,
+  "remaining_repeats": 12, 
+}
+```
