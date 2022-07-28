@@ -12,6 +12,16 @@ def kb_main_menu():
     return kb
 
 
+def kb_main_menu_admin():
+    kb = kb_main_menu()
+
+    kb.add(*[
+        InlineKeyboardButton(text="view_distribution", callback_data="view_categories")
+    ])
+
+    return kb
+
+
 async def kb_categories_menu(user_id: int):
     categories = (await find_one(ACCOUNTS, {"userId": user_id}))["categories"]
     kb = InlineKeyboardMarkup(row_width=3)
