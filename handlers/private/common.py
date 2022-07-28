@@ -3,6 +3,7 @@ from .fsm import *
 from .categories import *
 from .decks import *
 from .main_menu import *
+from .distribution import *
 
 from keyboards.user import *
 from consts.c_handlers import *
