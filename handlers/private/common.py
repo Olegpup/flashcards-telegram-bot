@@ -33,4 +33,7 @@ async def back(callback: types.CallbackQuery, state: FSMContext):
     else:
         await state.finish()
 
-        await callback.message.edit_text(WELCOME_MESSAGE, reply_markup=kb_main_menu())
+        # TODO call handler?
+        keyboard = kb_main_menu_admin() if is_admin(callback.message.from_user.id) else kb_main_menu()
+
+        await callback.message.edit_text(WELCOME_MESSAGE, reply_markup=keyboard)
