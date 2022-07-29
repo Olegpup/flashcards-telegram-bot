@@ -62,18 +62,9 @@ DistributionMenu = _init_fsm_tree(
     "DistributionMenu",
     {
         "distribution": {
-            "schedule": {
-                "schedule_show": {},
-                "schedule_create": {}
-            },
-            "solo": {
-                "solo_show": {
-                    "solo_show_edit": {}
-                },
-                "solo_create": {
-                    "solo_create_now": {},
-                    "solo_create_scheduled": {}
-                }
+            "distributions": {
+                "edit_distribution": {},
+                "create_distribution": {}
             }
         }
     }
