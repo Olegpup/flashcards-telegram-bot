@@ -29,10 +29,18 @@ Account
 Distribution
 ```
 {
-  "active": true,
-  "frequency": "hour / day / week / month",
-  "last_repeat": <timestamp>,
-  "first_repeat": <timestamp>,
-  "remaining_repeats": 12, 
+  "time_params": {
+    "active": true,
+    "frequency": <interval size in hours>,
+    "repeat_time": "HH:MM",
+    "manual_repeats": ["DD/MM/YYYY HH:MM", ...],
+    "last_repeat": 1657033667,
+    "total_repeats": 14,
+    "remaining_repeats": 12
+  },
+  "content": {
+    "text": "bla-bla\nblalba...",
+    "files": [],
+  }
 }
 ```
