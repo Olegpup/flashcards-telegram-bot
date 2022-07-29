@@ -8,4 +8,4 @@ from loader import dp
 @dp.callback_query_handler(lambda callback: callback.data.startswith("view_distribution"))
 async def view_distribution(callback: types.CallbackQuery):
     await DistributionMenu.distribution.set()
-    await callback.message.edit_text("text", reply_markup=kb_distribution_menu())
+    await callback.message.edit_text("text", reply_markup=await kb_distribution_menu())

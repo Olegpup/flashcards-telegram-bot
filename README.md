@@ -29,6 +29,7 @@ Account
 Distribution
 ```
 {
+  "code_name": "",
   "time_params": {
     "active": true,
     "frequency": <interval size in hours>,
