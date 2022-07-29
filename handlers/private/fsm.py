@@ -70,6 +70,40 @@ DistributionMenu = _init_fsm_tree(
     }
 )
 
+# TODO better approach for tree parse
+# sfmTree Generation with .extension?
+DistributionCreate = _init_fsm_tree(
+    "DistributionCreate",
+    {
+        "create_distribution": {
+            "enter_distribution_code_name": {
+                "enter_distribution_text": {
+                    "enter_distribution_file": {
+                        "enter_distribution_time_params": {
+                            "enter_distribution_now": {
+                                "enter_distribution_confirm": {}
+                            }, 
+
+                            "enter_distribution_scheduled": {
+                                # TODO Not inline keyboard
+
+                                # "enter_distribution_scheduled_manually": {
+                                #     "enter_distribution_scheduled_manually_time": {
+                                #         "enter_distribution_scheduled_manually_confirm": {}
+                                #     }
+                                # },
+                                # "enter_distribution_scheduled_repeat": {
+                                #     "enter_distribution_"
+                                # }
+                            }
+                        },
+                    }
+                }
+            },
+        }
+    }
+)
+
 # TODO fsm_utils.py, fsm.py
 
 # TODO add function that will raise exception if with something wrong with fsm tree

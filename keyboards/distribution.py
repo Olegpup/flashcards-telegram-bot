@@ -11,7 +11,7 @@ async def kb_distribution_menu():
     for i in range(DISTRIBUTION_PAGE_SIZE):
         kb.row(InlineKeyboardButton(text=f"{i}", callback_data=f"{i}"))
 
-    kb.row(InlineKeyboardButton(text="create", callback_data="view_solo_distribution"))
+    kb.row(InlineKeyboardButton(text="create", callback_data="create_disribution"))
     kb.row(
         InlineKeyboardButton(text="<-", callback_data="previous_page"),
         InlineKeyboardButton(text="->", callback_data="next_page"),
